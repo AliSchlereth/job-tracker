@@ -9,9 +9,10 @@ describe "User creates a comment" do
     fill_in "comment[note]", with: "This is a comment"
     click_on "Create Comment"
 
-
     expect(page).to have_content "This is a comment"
     expect(current_path).to eq(company_job_path(company, job))
   end
+
+  
 
 end

@@ -12,7 +12,7 @@ Company: <%= link_to @job.company.name, company_path(@job.company) %>
 Category: <%=@job.category.nil? ? 'not assigned' : @job.category.title%>
 
 Comments:
-<%= render partial: "comments/comment", collection: @job.comments %>
+<%= render partial: "comments/comment", collection: @job.comments.reverse %>
 
 
 Create a Comment:
