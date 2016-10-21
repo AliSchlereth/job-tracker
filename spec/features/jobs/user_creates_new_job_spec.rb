@@ -41,4 +41,14 @@ describe "User creates a new job" do
 
     expect(page).to have_content "Create Category"
   end
+
+  scenario "user clicks create new category takes to new category page" do
+    company = Company.create(name: "ESPN", city: "NYC")
+    category = Category.create(title: "Red")
+
+    visit new_company_job_path(company)
+    click_on "Create Category"
+
+    expect(current_path).to eq(new_category_path)
+  end
 end
