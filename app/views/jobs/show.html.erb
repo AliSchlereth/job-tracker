@@ -10,3 +10,18 @@ Level of Interest: <%= @job.level_of_interest %>
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
 
 Category: <%=@job.category.nil? ? 'not assigned' : @job.category.title%>
+
+Comments:
+<%= render partial: "comments/comment", collection: @job.comments %>
+
+
+Create a Comment:
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :job_id, :value => @job.id  %>
+
+  <%= f.label :note, "Comment" %>
+  <%= f.text_field :note %>
+
+
+  <%= f.submit %>
+<% end  %>
