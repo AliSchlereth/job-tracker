@@ -1,8 +1,7 @@
 class DashboardController < ApplicationController
 
   def index
-    @jobs = Jobs.all
-    @companies = Company.all
+    @interest_count = Job.sort_by_interest
   end
 
 end

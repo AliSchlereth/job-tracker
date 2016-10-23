@@ -28,4 +28,19 @@ describe Job do
       expect(job).to respond_to(:company)
     end
   end
+
+  describe "job methods" do
+    it "sorts jobs by level of interest" do
+      job = Job.create(title: "Software1", level_of_interest: 70, description: "Wahooo")
+      job = Job.create(title: "Software2", level_of_interest: 70, description: "Wahooo Yeah")
+      job = Job.create(title: "Software3", level_of_interest: 75, description: "Best")
+      job = Job.create(title: "Software4", level_of_interest: 30, description: "Bad Culture")
+
+      sorted = Job.sort_by_interest
+      expected = {30=>1, 70=>2, 75=>1}
+
+      expect(sorted).to eq(expected)
+    end
+
+    end
 end

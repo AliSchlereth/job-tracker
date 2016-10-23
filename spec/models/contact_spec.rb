@@ -20,7 +20,11 @@ describe Contact do
       expect(contact).to_not be_valid
     end
 
+    it "is valid with a name, email and position" do
+      contact = Contact.new(full_name: "Sandra", email: "name@email.com", position: "Manager" )
 
+      expect(contact).to be_valid
+    end
   end
 
 end

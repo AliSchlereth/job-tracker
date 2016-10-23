@@ -1,0 +1,12 @@
+<h1>Dashboard</h1>
+
+<ul class="count of interest">
+  <h4>Number of Jobs by Interest Level</h4>
+  <% @interest_count.each do |interest , count| %>
+  <ul>
+    Interest: <%= interest %>
+    Count:    <%= count %>
+  </ul>
+  <% end %>
+
+</ul>

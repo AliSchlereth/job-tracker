@@ -6,8 +6,7 @@ class Job < ActiveRecord::Base
 
 
   def self.sort_by_interest
-      jobs = Job.all.group(:level_of_interest)
-      byebug
+    order(level_of_interest: :desc).group(:level_of_interest).count
   end
 
 
