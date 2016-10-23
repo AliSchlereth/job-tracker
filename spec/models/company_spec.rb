@@ -34,4 +34,29 @@ describe Company do
       expect(company).to respond_to(:jobs)
     end
   end
+
+  describe "company methods" do
+    scenario "sort companies by average interest" do
+      company1 = Company.create!(name: "Company1", city: "Denver")
+      job1 = company1.jobs.create(title: "Job1", description: "Do a job", level_of_interest: 10)
+      job2 = company1.jobs.create(title: "Job2", description: "All the things", level_of_interest: 20)
+
+      company2 = Company.create!(name: "Company2", city: "Denver")
+      job3 = company2.jobs.create(title: "Job3", description: "Do a job", level_of_interest: 20)
+      job4 = company2.jobs.create(title: "Job4", description: "All the things", level_of_interest: 30)
+
+      company3 = Company.create!(name: "Company3", city: "Denver")
+      job5 = company3.jobs.create(title: "Job5", description: "Do a job", level_of_interest: 30)
+      job6 = company3.jobs.create(title: "Job6", description: "All the things", level_of_interest: 40)
+
+      top_3 = Company.top_three_companies_by_interest
+      expected = [["Company3", 35.0], ["Company2", 25.0], ["Company1", 15.0]]
+
+      expect(top_3).to eq(expected)
+    end
+  end
+
+
+
+
 end
