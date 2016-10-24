@@ -1,4 +1,11 @@
-<h3>All Companies</h3>
+<div class="btn btn-default" role="button">
+  <%= link_to "Create Company", new_company_path, :class => "btn" %>
+</div>
+<div class="btn btn-default" role="button">
+  <%= link_to "All Companies by Location", '/companies?sort=location', :class => "btn" %>
+</div>
+
+<h1>All Companies</h1>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4">
@@ -17,11 +24,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="btn btn-default" role="button">
-  <%= link_to "Create Company", new_company_path, :class => "btn" %>
-</div>
-<div class="btn btn-default" role="button">
-  <%= link_to "All Companies by Location", '/companies?sort=location', :class => "btn" %>
 </div>

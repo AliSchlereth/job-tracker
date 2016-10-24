@@ -1,5 +1,4 @@
-<p><%= link_to "Back to #{@job.company.name}", company_path(@job.company) %></p>
-<p><%= link_to "Back to All Jobs", jobs_path %></p>
+<p><%= link_to "Back to #{@job.company.name}", company_path(@job.company), class:"btn btn-default" %> <%= link_to "Back to All Jobs", jobs_path, class:"btn btn-default" %></p>
 
 
 <h4>Title: <%= @job.title %></h4>
