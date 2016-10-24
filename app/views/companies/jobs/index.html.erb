@@ -1,12 +1,24 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1>All Jobs for <strong><%= @company.name %></strong></h1>
+<p><%= link_to "Back to All Companies", companies_path %></p>
+<p><%= link_to "Back to All Jobs", jobs_path %></p>
 
-<% @jobs.each do |job| %>
-  <ul class=job_<%= job.id %>>
-    <%= link_to job.title, company_job_path(job.company, job)%> at <%= link_to job.company.name, company_path(job.company) %>
-    <%= link_to "Edit", edit_company_job_path(job.company, job) %>
-    <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
-  </ul>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <% @jobs.each do |job| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <ul class=job_<%= job.id %>>
+              <%= link_to job.title, company_job_path(job.company, job)%> at <%= link_to job.company.name, company_path(job.company) %>
+              <%= link_to "Edit", edit_company_job_path(job.company, job) %>
+              <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 Contacts:
 <%= render partial: "contacts/contact", collection: @company.contacts.reverse %>
@@ -26,5 +38,5 @@ Create a Contact:
   <%= f.label :position, "Position" %>
   <%= f.text_field :position %>
 
-  <%= f.submit %>
+  <%= f.submit class:"btn btn-default"%>
 <% end  %>

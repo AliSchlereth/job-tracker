@@ -1,11 +1,24 @@
 <h1>All Jobs</h1>
+<div class="btn btn-default" role="button">
+  <%= link_to "All Jobs by Interest", '/jobs?sort=interest', :class => "btn" %>
+</div>
 
-<% @jobs.each do |job| %>
-  <ul class=job_<%= job.id %>>
-    <%= link_to job.title, company_job_path(job.company, job)%> at
-    <%= link_to job.company.name, company_path(job.company) %>
-    Level of Interest: <%= job.level_of_interest %>
-    <%= link_to "Edit", edit_company_job_path(job.company, job) %>
-    <%= link_to "Delete", company_job_path(job.company, job), method: "delete" %>
-  </ul>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <% @jobs.each do |job| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <ul class=job_<%= job.id %>>
+              <%= link_to job.title, company_job_path(job.company, job)%> at
+              <%= link_to job.company.name, company_path(job.company) %>
+              Level of Interest: <%= job.level_of_interest %>
+              <%= link_to "Edit", edit_company_job_path(job.company, job) %>
+              <%= link_to "Delete", company_job_path(job.company, job), method: "delete" %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,8 @@
-Title: <%= @job.title %>
-<br>
+<p><%= link_to "Back to #{@job.company.name}", company_path(@job.company) %></p>
+<p><%= link_to "Back to All Jobs", jobs_path %></p>
+
+
+<h4>Title: <%= @job.title %></h4>
 
 Description: <%= @job.description %>
 <br>
@@ -23,5 +26,5 @@ Create a Comment:
   <%= f.text_field :note %>
 
 
-  <%= f.submit %>
+  <%= f.submit class:"btn btn-default"%>
 <% end  %>

@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="col-md-12 navbar navbar-default navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "Job Tracker", dashboard_index_path, class:"navbar-brand" %>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Companies", companies_path%></li>
+        <li><%= link_to "Jobs", jobs_path%></li>
+      </ul>
+    </div>
+  </nav>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>

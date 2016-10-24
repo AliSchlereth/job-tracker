@@ -1,31 +1,57 @@
 <h1>Dashboard</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Number of Jobs by Interest Level</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="count of interest">
+            <% @interest_count.each do |interest , count| %>
+            <ul>
+              Interest: <%= interest %>
+              Count:    <%= count %>
+            </ul>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-<ul class="count of interest">
-  <h4>Number of Jobs by Interest Level</h4>
-  <% @interest_count.each do |interest , count| %>
-  <ul>
-    Interest: <%= interest %>
-    Count:    <%= count %>
-  </ul>
-  <% end %>
-</ul>
-
-<ul class="Top 3 Companies">
-  <h4>Top 3 Companies by Interest</h4>
-  <% @top_3_companies.each do |company| %>
-    <ul>
-      Name: <%= company[0] %>
-      Average Interest: <%= company[-1] %>
-    </ul>
-  <% end %>
-</ul>
-
-<ul class="Jobs by Location">
-  <h4>Job Count by Location</h4>
-  <% @count_by_location.each do |location|%>
-    <ul>
-      <%= link_to location[0], "/companies?location=#{location[0]}"%>
-      <%= location[-1] %> Jobs
-    </ul>
-    <% end %>
-</ul>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Top 3 Companies by Interest</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="Top 3 Companies">
+            <% @top_3_companies.each do |company| %>
+              <ul>
+                Name: <%= company[0] %>
+                Average Interest: <%= company[-1] %>
+              </ul>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Job Count by Location</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="Jobs by Location">
+            <% @count_by_location.each do |location|%>
+              <ul>
+                <%= link_to location[0], "/companies?location=#{location[0]}"%>
+                <%= location[-1] %> Jobs
+              </ul>
+              <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
