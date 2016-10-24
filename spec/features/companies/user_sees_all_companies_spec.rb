@@ -44,7 +44,4 @@ describe "User sees all companies" do
     expect(page).to have_content "Create a new company here!"
   end
 
-
-
-
 end

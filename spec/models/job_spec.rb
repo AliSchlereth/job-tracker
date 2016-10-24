@@ -30,17 +30,26 @@ describe Job do
   end
 
   describe "job methods" do
-    it "sorts jobs by level of interest" do
+    it "sorts jobs by level of interest returns count" do
       job = Job.create(title: "Software1", level_of_interest: 70, description: "Wahooo")
       job = Job.create(title: "Software2", level_of_interest: 70, description: "Wahooo Yeah")
       job = Job.create(title: "Software3", level_of_interest: 75, description: "Best")
       job = Job.create(title: "Software4", level_of_interest: 30, description: "Bad Culture")
 
-      sorted = Job.sort_by_interest
+      sorted = Job.count_by_interest
       expected = {30=>1, 70=>2, 75=>1}
 
       expect(sorted).to eq(expected)
     end
 
+    it "sorts jobs by level of interest" do
+      job2 = Job.create(title: "Software2", level_of_interest: 70, description: "Wahooo Yeah")
+      job3 = Job.create(title: "Software3", level_of_interest: 75, description: "Best")
+      job4 = Job.create(title: "Software4", level_of_interest: 30, description: "Bad Culture")
+
+      sorted = Job.sort_by_interest
+
+      expect(sorted).to eq([job4, job2, job3])
     end
+  end
 end

@@ -1,30 +1,11 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1>All Jobs</h1>
 
 <% @jobs.each do |job| %>
   <ul class=job_<%= job.id %>>
-    <%= link_to job.title, company_job_path(job.company, job)%> at <%= link_to job.company.name, company_path(job.company) %>
+    <%= link_to job.title, company_job_path(job.company, job)%> at
+    <%= link_to job.company.name, company_path(job.company) %>
+    Level of Interest: <%= job.level_of_interest %>
     <%= link_to "Edit", edit_company_job_path(job.company, job) %>
-    <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
+    <%= link_to "Delete", company_job_path(job.company, job), method: "delete" %>
   </ul>
 <% end %>
-
-Contacts:
-<%= render partial: "contacts/contact", collection: @company.contacts.reverse %>
-
-
-
-Create a Contact:
-<%= form_for @contact do |f| %>
-  <%= f.hidden_field :company_id, :value => @company.id  %>
-
-  <%= f.label :full_name, "Name" %>
-  <%= f.text_field :full_name %>
-
-  <%= f.label :email, "Email" %>
-  <%= f.text_field :email %>
-
-  <%= f.label :position, "Position" %>
-  <%= f.text_field :position %>
-
-  <%= f.submit %>
-<% end  %>

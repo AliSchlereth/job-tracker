@@ -4,8 +4,11 @@ class Job < ActiveRecord::Base
   belongs_to :category
   has_many :comments
 
-
   def self.sort_by_interest
+    order(:level_of_interest)
+  end
+
+  def self.count_by_interest
     order(level_of_interest: :desc).group(:level_of_interest).count
   end
 
