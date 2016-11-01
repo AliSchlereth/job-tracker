@@ -1,0 +1,21 @@
+<%= link_to "Create a New Category", new_category_path, class:"btn btn-default" %>
+
+<h1>All Categories</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <% @categories.each do |category| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <ul class=category_<%= category.id %>>
+              <p>Category:<%= link_to category.title, category_path(category) %></p>
+              <%= link_to "Delete", category_path(category), method: "delete" %>
+              <%= link_to "Edit", edit_category_path(category)%>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

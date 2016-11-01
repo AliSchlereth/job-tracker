@@ -41,7 +41,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl'
-  gem 'database_cleaner'
 end
 
 group :development do
@@ -51,3 +50,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+group :test do
+  gem 'database_cleaner'
+end
+
+gem 'rails_12factor', group: :production

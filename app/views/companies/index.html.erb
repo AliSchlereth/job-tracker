@@ -1,11 +1,27 @@
-<h3>All Companies</h3>
+<div class="btn btn-default" role="button">
+  <%= link_to "Create Company", new_company_path, :class => "btn" %>
+</div>
+<div class="btn btn-default" role="button">
+  <%= link_to "All Companies by Location", '/companies?sort=location', :class => "btn" %>
+</div>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
-
-<%= link_to "Create Company", new_company_path %>
+<h1>All Companies</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+        <% @companies.each do |company| %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <ul class=company_<%= company.id %>>
+                <%= link_to company.name, company_path(company) %> - <%= company.city %><br>
+                <%= link_to "Edit", edit_company_path(company) %>
+                <%= link_to "Delete", company_path(company), method: "delete" %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

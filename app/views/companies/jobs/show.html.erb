@@ -1,0 +1,29 @@
+<p><%= link_to "Back to #{@job.company.name}", company_path(@job.company), class:"btn btn-default" %> <%= link_to "Back to All Jobs", jobs_path, class:"btn btn-default" %></p>
+
+
+<h4>Title: <%= @job.title %></h4>
+
+Description: <%= @job.description %>
+<br>
+
+Level of Interest: <%= @job.level_of_interest %>
+<br>
+
+Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+Category: <%=@job.category.nil? ? 'not assigned' : @job.category.title%>
+
+Comments:
+<%= render partial: "comments/comment", collection: @job.comments.reverse %>
+
+
+Create a Comment:
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :job_id, :value => @job.id  %>
+
+  <%= f.label :note, "Comment" %>
+  <%= f.text_field :note %>
+
+
+  <%= f.submit class:"btn btn-default"%>
+<% end  %>

@@ -1,0 +1,25 @@
+require 'rails_helper'
+
+describe "User creates a new category" do
+  scenario "they can create a new category" do
+
+    visit new_category_path
+    fill_in "category[title]", with: "Red"
+    click_on "Create Category"
+
+    expect(current_path).to eq("/categories/#{Category.last.id}")
+    expect(page).to have_content "Red"
+    expect(Category.count).to eq(1)
+  end
+
+  scenario "they are unable to recreate an existing category" do
+    category = Category.create(title: "Red")
+
+    visit new_category_path
+    fill_in "category[title]", with: "Red"
+    click_on "Create Category"
+
+    expect(page).to have_content "Create a New Category"
+    expect(Category.count).to eq(1)
+  end
+end
